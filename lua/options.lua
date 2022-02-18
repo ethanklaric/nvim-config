@@ -39,5 +39,32 @@ vim.api.nvim_exec(
     augroup end
     ]], false)
 
-
+    
 local zephyr = require('zephyr')
+
+local lspconfig = require('lspconfig')
+
+-- auto-start completion
+g.coq_settings = { auto_start = 'shut-up' }
+
+-- enable language servers
+
+-- HTML
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup {
+  capabilities = capabilities,
+}
+require'lspconfig'.html.setup{}
+
+-- Java
+require'lspconfig'.jdtls.setup{ cmd = { 'jdtls' } }
+
+local servers = { }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({
+    -- on_attach = my_custom_on_attach,
+  }))
+end

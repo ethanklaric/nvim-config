@@ -16,6 +16,19 @@ packer.startup(function()
         event = 'VimEnter'
     }
 
+    use 'neovim/nvim-lspconfig'
+
+    -- Autocomplete
+    use { 'ms-jpq/coq-nvim', run = 'python3 -m coq deps' }
+    use 'ms-jpq/coq.artifacts'
+    use 'ms-jpq/coq.thirdparty'
+    
+    -- file tree
+    use 'ms-jpq/chadtree'
+
+    -- Java
+    use 'mfussenegger/nvim-jdtls'
+
     use {
         'nvim-treesitter/nvim-treesitter',
 	    run = ':TSUpdate'
