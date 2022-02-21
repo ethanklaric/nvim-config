@@ -23,6 +23,8 @@ map('i', 'jh', '<Esc>', opt)
 -- Splits
 map('n', '<leader>j', ':wincmd j<cr>', opt)
 map('n', '<leader>k', ':wincmd k<cr>', opt)
+map('n', '<leader>h', ':wincmd h<cr>', opt)
+map('n', '<leader>l', ':wincmd l<cr>', opt)
 
 -- Allow cursor to move through wrapped lines
 map('', 'j', 'v:count ? "j" : "gj"', {expr = true})
